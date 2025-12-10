@@ -1,10 +1,10 @@
-package com.som.sms;
+package com.som.ems;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmsEmployeeManagementSystemApplicationTests {
+class EmsApplicationTests {
 
 	@Test
 	void contextLoads() {
