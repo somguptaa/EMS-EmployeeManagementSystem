@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	// CREATE -------------------------------------------------------
+	// CREATE 
 	@Override
 	public Employee create(Employee employee) {
 		logger.info("Saving new employee: {}", employee);
@@ -30,7 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return saved;
 	}
 
-	// GET ALL ------------------------------------------------------
+	// GET ALL 
+
 	@Override
 	public List<Employee> getAll() {
 		logger.info("Fetching all employees");
@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employees;
 	}
 
-	// GET BY ID ----------------------------------------------------
+	// GET BY ID 
 	@Override
 	public Employee getById(Long id) {
 		logger.info("Fetching employee by ID: {}", id);
@@ -50,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		});
 	}
 
-	// UPDATE -------------------------------------------------------
+	// UPDATE
 	@Override
 	public Employee update(Long id, Employee employee) {
 
@@ -69,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 
-	// DELETE BY ID -------------------------------------------------
+	// DELETE BY ID
 	@Override
 	public boolean deleteById(Long id) {
 		logger.info("Deleting employee ID: {}", id);
@@ -84,7 +84,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return true;
 	}
 
-	// DELETE ALL ---------------------------------------------------
+	// DELETE ALL
 	@Override
 	public void deleteAll() {
 		logger.warn("Deleting ALL employees from database");
