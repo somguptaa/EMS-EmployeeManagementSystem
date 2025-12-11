@@ -132,7 +132,7 @@ Contains common reusable utility/helper classes.
 | GET    | `/api/employees/{id}`                    | Get employee by ID                         |
 | PUT    | `/api/employees/{id}`                    | Update employee details                    |
 | DELETE | `/api/employees/{id}`                    | Delete employee                            |
-| GET    | `/api/employees/manager/{managerId}`     | Get employees under a specific manager     |
+
 
 ---
 
@@ -145,7 +145,7 @@ Contains common reusable utility/helper classes.
 | GET    | `/api/managers/{id}`                     | Get manager by ID                              |
 | PUT    | `/api/managers/{id}`                     | Update manager details                         |
 | DELETE | `/api/managers/{id}`                     | Delete manager                                 |
-| GET    | `/api/managers/{id}/employees`           | Get employees managed by a specific manager    |
+
 
 ---
 
