@@ -29,4 +29,16 @@ public class GlobalExceptionHandler {
 
 	}
 	
+	@ExceptionHandler(ManagerIdNotFoundException.class)
+	public ResponseEntity<Object> handleExceptions(ManagerIdNotFoundException ex) {
+
+		List<String> details = new ArrayList<>();
+		details.add("Error : Manager Id not found");
+		details.add("Detailed Message:" + ex.getLocalizedMessage());
+		details.add("Timestamp:" + System.currentTimeMillis());
+		ErrorResponseDto error = new ErrorResponseDto(HttpURLConnection.HTTP_BAD_REQUEST, Constants.FAILURE,
+				"NOT-FOUND", details);
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+
+	}
 }
