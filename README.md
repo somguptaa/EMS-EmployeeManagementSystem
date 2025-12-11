@@ -55,6 +55,7 @@ employee-management-system/
 │       │               │
 │       │               ├── dto/
 │       │               │   ├── EmployeeDTO.java
+│       │               │   ├── ErrorResponseDto.java
 │       │               │   └── ManagerDTO.java
 │       │               │
 │       │               ├── entity/
