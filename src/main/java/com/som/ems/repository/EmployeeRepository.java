@@ -1,5 +1,9 @@
 package com.som.ems.repository;
 
-public class EmployeeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.som.ems.entity.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
 }
