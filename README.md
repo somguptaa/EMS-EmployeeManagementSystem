@@ -54,9 +54,8 @@ employee-management-system/
 │       │               │   └── ManagerController.java
 │       │               │
 │       │               ├── dto/
-│       │               │   ├── EmployeeDTO.java
 │       │               │   ├── ErrorResponseDto.java
-│       │               │   └── ManagerDTO.java
+│       │               │   └── ResponseMessageDto.java
 │       │               │
 │       │               ├── entity/
 │       │               │   ├── Employee.java
@@ -100,7 +99,7 @@ Main application package containing `EmsApplication.java`.
 Contains all REST API controllers.
 
 - #### `com.som.ems.dto`
-Contains DTO classes used for request/response models.
+Contains DTO classes used for response models.
 
 - #### `com.som.ems.entity`
 Contains JPA entity classes mapped to database tables.
