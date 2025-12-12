@@ -28,7 +28,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    // CREATE ------------------------------------------------------
+    // CREATE 
     @Operation(summary = "Create New Employee")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Employee Created Successfully"),
@@ -53,7 +53,7 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    // GET ALL ------------------------------------------------------
+    // GET ALL 
     @Operation(summary = "Get All Employees")
     @GetMapping
     public ResponseEntity<ResponseMessageDto> getAllEmployees() {
@@ -73,7 +73,7 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
-    // GET BY ID ----------------------------------------------------
+    // GET BY ID 
     @Operation(summary = "Get Employee By ID")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseMessageDto> getEmployeeById(@PathVariable Long id) {
@@ -100,7 +100,7 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
-    // UPDATE -------------------------------------------------------
+    // UPDATE
     @Operation(summary = "Update Employee")
     @PutMapping("/{id}")
     public ResponseEntity<ResponseMessageDto> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
@@ -127,7 +127,7 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
-    // DELETE BY ID -------------------------------------------------
+    // DELETE BY ID 
     @Operation(summary = "Delete Employee By ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseMessageDto> deleteEmployee(@PathVariable Long id) {
@@ -154,7 +154,7 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
-    // DELETE ALL ---------------------------------------------------
+    // DELETE ALL
     @Operation(summary = "Delete All Employees")
     @DeleteMapping
     public ResponseEntity<ResponseMessageDto> deleteAllEmployees() {

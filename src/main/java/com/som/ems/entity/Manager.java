@@ -12,10 +12,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
+@Data
 @Entity
 @Table(name = "manager")
 @AllArgsConstructor
@@ -48,4 +49,7 @@ public class Manager {
 	@UpdateTimestamp
 	@Column(name = "updatedDate")
 	private LocalDateTime updatedDate;
-}
+
+	
+	}
+
