@@ -13,18 +13,21 @@ This project supports full CRUD operations for both **Employees** and **Managers
 - Update manager details  
 - View all managers  
 - Fetch manager by ID  
-- Delete managers  
+- Delete managers
+- Delete all managers  
 
 ### Employee Features
 - Add new employees  
 - Update employee info  
 - View all employees  
 - Fetch employee by ID  
-- Delete employees  
+- Delete employees
+- Delete all employees
 
 ---
 ### Additional Feature
 - Integrated **Swagger API Documentation** for exploring and testing APIs easily.
+- Applied **Loggers(SLF4J)** for easy debugging & maintenance.
 ---
 
 ## Tech Stack
@@ -125,33 +128,33 @@ Contains common reusable utility/helper classes.
 
 ### Employee APIs
 
-| Method | Endpoint                               | Description                               |
-|--------|------------------------------------------|-------------------------------------------|
+| Method | Endpoint                                 | Description                                |
+|--------|------------------------------------------|--------------------------------------------|
 | POST   | `/api/employees`                         | Create new employee                        |
 | GET    | `/api/employees`                         | Get all employees                          |
 | GET    | `/api/employees/{id}`                    | Get employee by ID                         |
 | PUT    | `/api/employees/{id}`                    | Update employee details                    |
 | DELETE | `/api/employees/{id}`                    | Delete employee                            |
+| DELETE | `/api/employees`                         | Delete all employee                        |
 
 
 ---
 
 ### Manager APIs
 
-| Method | Endpoint                               | Description                                   |
-|--------|------------------------------------------|-----------------------------------------------|
+| Method | Endpoint                                 | Description                                    |
+|--------|------------------------------------------|------------------------------------------------|
 | POST   | `/api/managers`                          | Create new manager                             |
 | GET    | `/api/managers`                          | Get all managers                               |
 | GET    | `/api/managers/{id}`                     | Get manager by ID                              |
 | PUT    | `/api/managers/{id}`                     | Update manager details                         |
 | DELETE | `/api/managers/{id}`                     | Delete manager                                 |
-
+| DELETE | `/api/managers`                          | Delete all manager                             |
 
 ---
 
 ## Future Enhancements
 
-- Loggers(SLF4J) for easy debugging & maintenance
 - Pagination & Sorting for Employee and Manager Lists
 - Frontend UI for better user interaction 
 
