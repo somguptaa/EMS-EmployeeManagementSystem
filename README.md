@@ -13,14 +13,16 @@ This project supports full CRUD operations for both **Employees** and **Managers
 - Update manager details  
 - View all managers  
 - Fetch manager by ID  
-- Delete managers  
+- Delete managers
+- Delete all managers  
 
 ### Employee Features
 - Add new employees  
 - Update employee info  
 - View all employees  
 - Fetch employee by ID  
-- Delete employees  
+- Delete employees
+- Delete all employees
 
 ---
 ### Additional Feature
