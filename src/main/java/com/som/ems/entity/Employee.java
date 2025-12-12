@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,18 +29,22 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	@Column(name = "empName")
 	private String empName;
 
+	
 	@Column(name = "empaddress")
 	private String empaddress;
 	
+	@NotNull
 	@Column(name ="empMail")
 	private String email;
 	
 	@Column(name = "salary")
 	private double salary;
 	
+	@NotNull
 	@Column(name="empDept")
 	private String dept;
 	
