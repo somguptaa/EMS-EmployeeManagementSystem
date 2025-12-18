@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "EmployeeController", description = "Employee CRUD Operations")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/managers")
 public class ManagerController {

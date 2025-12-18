@@ -1,0 +1,90 @@
+import { useEffect, useState } from "react";
+import { TextField, Button, Box } from "@mui/material";
+import api from "../../api";
+
+export default function EmployeeForm({ selected, onSaved }) {
+  const [employee, setEmployee] = useState({
+    empName: "",
+    empaddress: "",
+    email: "",
+    salary: "",
+    dept: ""
+  });
+
+  useEffect(() => {
+    if (selected) {
+      setEmployee(selected);
+    }
+  }, [selected]);
+
+  const handleChange = (e) => {
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (employee.id) {
+      await api.put(`/employees/${employee.id}`, employee);
+    } else {
+      await api.post("/employees", employee);
+    }
+
+    setEmployee({
+      empName: "",
+      empaddress: "",
+      email: "",
+      salary: "",
+      dept: ""
+    });
+
+    onSaved();
+  };
+
+  return (
+    <Box sx={{ mb: 3 }}>
+      <TextField
+        label="Name"
+        name="empName"
+        value={employee.empName}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Address"
+        name="empaddress"
+        value={employee.empaddress}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Email"
+        name="email"
+        value={employee.email}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Salary"
+        name="salary"
+        type="number"
+        value={employee.salary}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Department"
+        name="dept"
+        value={employee.dept}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <Button variant="contained" onClick={handleSubmit}>
+        {employee.id ? "Update" : "Add"}
+      </Button>
+    </Box>
+  );
+}

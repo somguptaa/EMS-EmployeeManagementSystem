@@ -17,8 +17,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @Tag(name = "EmployeeController", description = "Employee CRUD Operations")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -35,7 +37,7 @@ public class EmployeeController {
             @ApiResponse(responseCode = "400", description = "Employee Creation Failed")
     })
     @PostMapping
-    public ResponseEntity<ResponseMessageDto> createNewEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<ResponseMessageDto> createNewEmployee(@Valid @RequestBody Employee employee) {
 
         logger.info("START: Create Employee Request Received: {}", employee);
 
@@ -156,7 +158,7 @@ public class EmployeeController {
 
     // DELETE ALL
     @Operation(summary = "Delete All Employees")
-    @DeleteMapping
+    @DeleteMapping("/all")
     public ResponseEntity<ResponseMessageDto> deleteAllEmployees() {
 
         logger.warn("WARNING: Request Received to Delete ALL Employees");

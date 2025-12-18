@@ -1,0 +1,20 @@
+import GenericCrudList from "../../components/GenericCrudList";
+import ManagerForm from "./ManagerForm";
+
+export default function ManagersPage() {
+  return (
+    <GenericCrudList
+      title="Managers"
+      apiPath="/managers"
+      nameField="mngName"
+      FormComponent={ManagerForm}
+      columns={[
+        { field: "id", label: "ID" },
+        { field: "mngName", label: "Name" },
+        { field: "email", label: "Email" },
+        { field: "dept", label: "Department" },
+        { field: "salary", label: "Salary" }
+      ]}
+    />
+  );
+}

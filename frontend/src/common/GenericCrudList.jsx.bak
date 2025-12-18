@@ -1,0 +1,249 @@
+import { useEffect, useState } from "react";
+import api from "../api";
+import {
+  Typography,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Button,
+  TextField,
+  Card,
+  CardContent,
+  Stack,
+  Skeleton,
+  Snackbar,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions
+} from "@mui/material";
+
+export default function GenericCrudList({
+  title,
+  apiPath,
+  nameField,
+  columns,
+  FormComponent
+}) {
+  const [data, setData] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  const [searchId, setSearchId] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+
+  const [snackbar, setSnackbar] = useState({ open: false, message: "" });
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [deleteType, setDeleteType] = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null);
+
+  useEffect(() => {
+    loadAll();
+  }, []);
+
+  const loadAll = async () => {
+    setLoading(true);
+    try {
+      const res = await api.get(apiPath);
+      setData(res.data.list || []);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const openDeleteDialog = (type, id = null) => {
+    setDeleteType(type);
+    setDeleteTarget(id);
+    setOpenDialog(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      if (deleteType === "row") {
+        await api.delete(`${apiPath}/${deleteTarget}`);
+      }
+      if (deleteType === "search") {
+        await api.delete(`${apiPath}/${searchResult.id}`);
+        setSearchResult(null);
+        setSearchId("");
+      }
+      if (deleteType === "all") {
+        await api.delete(`${apiPath}/all`);
+        setSearchResult(null);
+        setSearchId("");
+      }
+
+      setSnackbar({ open: true, message: "Delete successful" });
+      loadAll();
+    } catch {
+      setSnackbar({ open: true, message: "Delete failed" });
+    } finally {
+      setOpenDialog(false);
+    }
+  };
+
+  const handleSearch = async () => {
+    if (!searchId) return;
+    setLoading(true);
+    try {
+      const res = await api.get(`${apiPath}/${searchId}`);
+      setSearchResult(res.data.data);
+    } catch {
+      setSearchResult(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Typography variant="h4" gutterBottom>
+        {title}
+      </Typography>
+
+      <FormComponent
+        selected={selected}
+        onSaved={() => {
+          setSelected(null);
+          loadAll();
+        }}
+      />
+
+      {/* SEARCH */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Typography variant="h6">Search by ID</Typography>
+          <Stack direction="row" spacing={2}>
+            <TextField
+              label="ID"
+              size="small"
+              value={searchId}
+              onChange={(e) => setSearchId(e.target.value)}
+            />
+            <Button variant="contained" onClick={handleSearch}>
+              Search
+            </Button>
+          </Stack>
+        </CardContent>
+      </Card>
+
+      {/* SEARCH RESULT */}
+      {loading ? (
+        <Card sx={{ mb: 3 }}>
+          <CardContent>
+            <Skeleton height={30} />
+            <Skeleton height={20} />
+            <Skeleton height={20} />
+          </CardContent>
+        </Card>
+      ) : (
+        searchResult && (
+          <Card sx={{ mb: 3 }}>
+            <CardContent>
+              {columns.map(col => (
+                <Typography key={col.field}>
+                  <b>{col.label}:</b> {searchResult[col.field]}
+                </Typography>
+              ))}
+
+              <Stack direction="row" spacing={2} mt={2}>
+                <Button onClick={() => setSearchResult(null)}>OK</Button>
+                <Button
+                  color="error"
+                  variant="contained"
+                  onClick={() => openDeleteDialog("search")}
+                >
+                  Delete
+                </Button>
+              </Stack>
+            </CardContent>
+          </Card>
+        )
+      )}
+
+      <Button
+        variant="contained"
+        color="error"
+        sx={{ mb: 2 }}
+        onClick={() => openDeleteDialog("all")}
+      >
+        Delete All
+      </Button>
+
+      {/* TABLE */}
+      <Table>
+        <TableHead>
+          <TableRow>
+            {columns.map(col => (
+              <TableCell key={col.field}>{col.label}</TableCell>
+            ))}
+            <TableCell>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {loading
+            ? [...Array(5)].map((_, i) => (
+                <TableRow key={i}>
+                  {columns.map(col => (
+                    <TableCell key={col.field}>
+                      <Skeleton />
+                    </TableCell>
+                  ))}
+                  <TableCell><Skeleton width={80} /></TableCell>
+                </TableRow>
+              ))
+            : data.map(item => (
+                <TableRow key={item.id}>
+                  {columns.map(col => (
+                    <TableCell key={col.field}>
+                      {item[col.field]}
+                    </TableCell>
+                  ))}
+                  <TableCell>
+                    <Button size="small" onClick={() => setSelected(item)}>
+                      Edit
+                    </Button>
+                    <Button
+                      size="small"
+                      color="error"
+                      onClick={() => openDeleteDialog("row", item.id)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+        </TableBody>
+      </Table>
+
+      {/* DIALOG */}
+      <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenDialog(false)}>Cancel</Button>
+          <Button color="error" variant="contained" onClick={confirmDelete}>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        message={snackbar.message}
+      />
+    </>
+  );
+}

@@ -29,21 +29,21 @@ public class Manager {
 	private Long id;
 	
 	@NotNull
-	@Column(name = "mngName")
+	@Column(name = "mngName", nullable = false)
 	private String mngName;
 
 	@Column(name = "mngaddress")
 	private String mngaddress;
 	
 	@NotNull
-	@Column(name ="mngMail")
+	@Column(name ="mngMail", nullable = false)
 	private String email;
 	
 	@Column(name = "salary")
 	private double salary;
 	
 	@NotNull
-	@Column(name="mngDept")
+	@Column(name="mngDept", nullable = false)
 	private String dept;
 	
 	@CreationTimestamp

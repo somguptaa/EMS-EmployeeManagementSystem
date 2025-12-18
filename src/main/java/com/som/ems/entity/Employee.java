@@ -30,7 +30,7 @@ public class Employee {
 	private Long id;
 
 	@NotNull
-	@Column(name = "empName")
+	@Column(name = "empName", nullable = false)
 	private String empName;
 
 	
@@ -38,14 +38,14 @@ public class Employee {
 	private String empaddress;
 	
 	@NotNull
-	@Column(name ="empMail")
+	@Column(name ="empMail", nullable = false)
 	private String email;
 	
 	@Column(name = "salary")
 	private double salary;
 	
 	@NotNull
-	@Column(name="empDept")
+	@Column(name="empDept", nullable = false)
 	private String dept;
 	
 	@CreationTimestamp
