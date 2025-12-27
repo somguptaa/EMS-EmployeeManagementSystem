@@ -15,7 +15,6 @@ import com.som.ems.utility.Constants;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	
 	@ExceptionHandler(EmployeeIdNotFoundException.class)
 	public ResponseEntity<Object> handleExceptions(EmployeeIdNotFoundException ex) {
 
@@ -28,7 +27,7 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
 	}
-	
+
 	@ExceptionHandler(ManagerIdNotFoundException.class)
 	public ResponseEntity<Object> handleExceptions(ManagerIdNotFoundException ex) {
 

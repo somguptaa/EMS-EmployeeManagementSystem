@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.som.ems.entity.Manager;
 import com.som.ems.exceptions.*;
 import com.som.ems.repository.ManagerRepository;
@@ -21,7 +20,7 @@ public class ManagerServiceImpl implements ManagerService {
 	@Autowired
 	private ManagerRepository managerRepository;
 
-	// CREATE 
+	// CREATE
 	@Override
 	public Manager create(Manager manager) {
 		logger.info("Saving new manager: {}", manager);
@@ -30,7 +29,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return saved;
 	}
 
-	// GET ALL 
+	// GET ALL
 
 	@Override
 	public List<Manager> getAll() {
@@ -40,7 +39,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return managers;
 	}
 
-	// GET BY ID 
+	// GET BY ID
 	@Override
 	public Manager getById(Long id) {
 		logger.info("Fetching manager by ID: {}", id);
@@ -55,20 +54,19 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public Manager update(Long id, Manager manager) {
 
-	    logger.info("Updating manager ID: {}", id);
+		logger.info("Updating manager ID: {}", id);
 
-	    Manager existing = managerRepository.findById(id)
-	            .orElseThrow(() -> new ManagerIdNotFoundException("Manager not found with ID: " + id));
+		Manager existing = managerRepository.findById(id)
+				.orElseThrow(() -> new ManagerIdNotFoundException("Manager not found with ID: " + id));
 
-	    // FULL UPDATE → Replace all fields
-	    manager.setId(existing.getId()); // keep same ID  
-	    Manager updated = managerRepository.save(manager);
+		// FULL UPDATE → Replace all fields
+		manager.setId(existing.getId()); // keep same ID
+		Manager updated = managerRepository.save(manager);
 
-	    logger.info("FULL UPDATE successful for ID: {}", id);
+		logger.info("FULL UPDATE successful for ID: {}", id);
 
-	    return updated;
+		return updated;
 	}
-
 
 	// DELETE BY ID
 	@Override

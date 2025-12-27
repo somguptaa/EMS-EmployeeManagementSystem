@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "manager")
@@ -27,33 +26,31 @@ public class Manager {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
-	@Column(name = "mngName")
+	@Column(name = "mngName", nullable = false)
 	private String mngName;
 
 	@Column(name = "mngaddress")
 	private String mngaddress;
-	
+
 	@NotNull
-	@Column(name ="mngMail")
+	@Column(name = "mngMail", nullable = false)
 	private String email;
-	
+
 	@Column(name = "salary")
 	private double salary;
-	
+
 	@NotNull
-	@Column(name="mngDept")
+	@Column(name = "mngDept", nullable = false)
 	private String dept;
-	
+
 	@CreationTimestamp
 	@Column(name = "createdDate")
 	private LocalDateTime createdDate;
-	
+
 	@UpdateTimestamp
 	@Column(name = "updatedDate")
 	private LocalDateTime updatedDate;
 
-	
-	}
-
+}

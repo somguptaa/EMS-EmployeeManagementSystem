@@ -23,38 +23,35 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-	@Column(name = "empName")
+	@Column(name = "empName", nullable = false)
 	private String empName;
 
-	
 	@Column(name = "empaddress")
 	private String empaddress;
-	
+
 	@NotNull
-	@Column(name ="empMail")
+	@Column(name = "empMail", nullable = false)
 	private String email;
-	
+
 	@Column(name = "salary")
 	private double salary;
-	
+
 	@NotNull
-	@Column(name="empDept")
+	@Column(name = "empDept", nullable = false)
 	private String dept;
-	
+
 	@CreationTimestamp
-	@Column(name = "createdDate" ,updatable = false)
+	@Column(name = "createdDate", updatable = false)
 	private LocalDateTime createdDate;
-	
+
 	@UpdateTimestamp
 	@Column(name = "updatedDate")
 	private LocalDateTime updatedDate;
-
 
 }

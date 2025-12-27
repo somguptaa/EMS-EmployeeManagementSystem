@@ -1,6 +1,6 @@
 package com.som.ems.exceptions;
 
-public class ManagerIdNotFoundException extends RuntimeException{
+public class ManagerIdNotFoundException extends RuntimeException {
 
 	/**
 	 * 
@@ -10,8 +10,5 @@ public class ManagerIdNotFoundException extends RuntimeException{
 	public ManagerIdNotFoundException(String msg) {
 		super(msg);
 	}
-	
-	
-
 
 }

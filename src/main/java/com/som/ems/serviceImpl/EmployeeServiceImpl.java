@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	// CREATE 
+	// CREATE
 	@Override
 	public Employee create(Employee employee) {
 		logger.info("Saving new employee: {}", employee);
@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return saved;
 	}
 
-	// GET ALL 
+	// GET ALL
 
 	@Override
 	public List<Employee> getAll() {
@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employees;
 	}
 
-	// GET BY ID 
+	// GET BY ID
 	@Override
 	public Employee getById(Long id) {
 		logger.info("Fetching employee by ID: {}", id);
@@ -54,20 +54,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee update(Long id, Employee employee) {
 
-	    logger.info("Updating employee ID: {}", id);
+		logger.info("Updating employee ID: {}", id);
 
-	    Employee existing = employeeRepository.findById(id)
-	            .orElseThrow(() -> new EmployeeIdNotFoundException("Employee not found with ID: " + id));
+		Employee existing = employeeRepository.findById(id)
+				.orElseThrow(() -> new EmployeeIdNotFoundException("Employee not found with ID: " + id));
 
-	    // FULL UPDATE → Replace all fields
-	    employee.setId(existing.getId()); // keep same ID  
-	    Employee updated = employeeRepository.save(employee);
+		// FULL UPDATE → Replace all fields
+		employee.setId(existing.getId()); // keep same ID
+		Employee updated = employeeRepository.save(employee);
 
-	    logger.info("FULL UPDATE successful for ID: {}", id);
+		logger.info("FULL UPDATE successful for ID: {}", id);
 
-	    return updated;
+		return updated;
 	}
-
 
 	// DELETE BY ID
 	@Override
