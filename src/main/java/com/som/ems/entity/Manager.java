@@ -35,14 +35,22 @@ public class Manager {
 	private String mngaddress;
 
 	@NotNull
+<<<<<<< HEAD
 	@Column(name = "mngMail", nullable = false)
+=======
+	@Column(name ="mngMail", nullable = false)
+>>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String email;
 
 	@Column(name = "salary")
 	private double salary;
 
 	@NotNull
+<<<<<<< HEAD
 	@Column(name = "mngDept", nullable = false)
+=======
+	@Column(name="mngDept", nullable = false)
+>>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String dept;
 
 	@CreationTimestamp

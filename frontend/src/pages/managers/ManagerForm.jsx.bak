@@ -1,0 +1,72 @@
+import { useEffect, useState } from "react";
+import { TextField, Button, Box } from "@mui/material";
+import api from "../../api";
+
+export default function ManagerForm({ selected, onSaved }) {
+  const [manager, setManager] = useState({
+    name: "",
+    email: "",
+    department: ""
+  });
+
+  useEffect(() => {
+    if (selected) setManager(selected);
+  }, [selected]);
+
+  const handleChange = (e) => {
+    setManager({ ...manager, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (!manager.name || !manager.email || !manager.department) {
+      alert("All fields are required");
+      return;
+    }
+
+    if (manager.id) {
+      await api.put(`/managers/${manager.id}`, manager);
+    } else {
+      await api.post("/managers", manager);
+    }
+
+    setManager({
+      name: "",
+      email: "",
+      department: ""
+    });
+
+    onSaved();
+  };
+
+  return (
+    <Box sx={{ mb: 3 }}>
+      <TextField
+        label="Name"
+        name="name"
+        value={manager.name}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Email"
+        name="email"
+        value={manager.email}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <TextField
+        label="Department"
+        name="department"
+        value={manager.department}
+        onChange={handleChange}
+        sx={{ mr: 2 }}
+      />
+
+      <Button variant="contained" onClick={handleSubmit}>
+        {manager.id ? "Update" : "Add"}
+      </Button>
+    </Box>
+  );
+}

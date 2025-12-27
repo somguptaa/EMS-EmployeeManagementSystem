@@ -1,0 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EmployeePage from "./pages/employees/EmployeePage";
+import ManagerPage from "./pages/managers/ManagerPage";
+import Layout from "./layout/Layout";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/employees" element={<EmployeePage />} />
+          <Route path="/managers" element={<ManagerPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
+}

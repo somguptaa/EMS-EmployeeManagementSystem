@@ -36,14 +36,22 @@ public class Employee {
 	private String empaddress;
 
 	@NotNull
+<<<<<<< HEAD
 	@Column(name = "empMail", nullable = false)
+=======
+	@Column(name ="empMail", nullable = false)
+>>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String email;
 
 	@Column(name = "salary")
 	private double salary;
 
 	@NotNull
+<<<<<<< HEAD
 	@Column(name = "empDept", nullable = false)
+=======
+	@Column(name="empDept", nullable = false)
+>>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String dept;
 
 	@CreationTimestamp

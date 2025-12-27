@@ -1,0 +1,28 @@
+import { Drawer, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
+import { Dashboard, People, ManageAccounts } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+
+const Sidebar = () => {
+  return (
+    <Drawer variant="permanent" sx={{ width: 240 }}>
+      <List sx={{ width: 240, mt: 8 }}>
+        <ListItem button component={Link} to="/">
+          <ListItemIcon><Dashboard /></ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+
+        <ListItem button component={Link} to="/employees">
+          <ListItemIcon><People /></ListItemIcon>
+          <ListItemText primary="Employees" />
+        </ListItem>
+
+        <ListItem button component={Link} to="/managers">
+          <ListItemIcon><ManageAccounts /></ListItemIcon>
+          <ListItemText primary="Managers" />
+        </ListItem>
+      </List>
+    </Drawer>
+  );
+};
+
+export default Sidebar;
