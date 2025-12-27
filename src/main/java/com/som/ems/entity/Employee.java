@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,22 +35,14 @@ public class Employee {
 	private String empaddress;
 
 	@NotNull
-<<<<<<< HEAD
 	@Column(name = "empMail", nullable = false)
-=======
-	@Column(name ="empMail", nullable = false)
->>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String email;
 
 	@Column(name = "salary")
 	private double salary;
 
 	@NotNull
-<<<<<<< HEAD
 	@Column(name = "empDept", nullable = false)
-=======
-	@Column(name="empDept", nullable = false)
->>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 	private String dept;
 
 	@CreationTimestamp

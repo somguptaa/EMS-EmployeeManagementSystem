@@ -1,140 +1,174 @@
-# Employee Management System (EMS)
+# Employee & Manager Management System  
+### Spring Boot + MySQL + REST API
 
-A **full-stack Employee Management System** built using **Spring Boot** for backend REST APIs and **React + Material UI** for the frontend.  
-This project demonstrates real-world CRUD operations, frontend–backend integration, and clean GitHub project structure.
-
----
-
-## Tech Stack
-
-### Backend
-- Java 21
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- MySQL
-- REST APIs
-- Maven
-
-### Frontend
-- React (Vite)
-- Material UI (MUI)
-- Axios
-- React Router DOM
-
-### Tools & Platforms
-- Git & GitHub
-- VS Code / Eclipse / IntelliJ
-- Postman
+A complete **Employee & Manager Management System** built using **Spring Boot**, **Spring Data JPA**, and **MySQL**.  
+This project supports full CRUD operations for both **Employees** and **Managers**.
 
 ---
 
 ## Features
 
-### Employee Module
-- Add new employee
-- Update employee details
-- Get employee by ID
-- Get all employees
-- Delete employee by ID
+### Manager Features
+- Add new managers  
+- Update manager details  
+- View all managers  
+- Fetch manager by ID  
+- Delete managers
+- Delete all managers  
+
+### Employee Features
+- Add new employees  
+- Update employee info  
+- View all employees  
+- Fetch employee by ID  
+- Delete employees
 - Delete all employees
-- Search employee by ID with **OK / Delete** options
-- Skeleton loaders for better UX
-- Confirmation dialogs for delete actions
-
-### Manager Module
-- Add new manager
-- Update manager details
-- Get manager by ID
-- Get all managers
-- Delete manager by ID
-- Delete all managers
-- Search manager by ID with **OK / Delete** options
-- Confirmation dialogs for delete actions
-
-### Dashboard
-- Clean sidebar-based layout
-- Grid-based content layout
-- Responsive UI using Material UI
 
 ---
+### Additional Feature
+- Integrated **Swagger API Documentation** for exploring and testing APIs easily.
+- Applied **Loggers(SLF4J)** for easy debugging & maintenance.
+---
 
-## API Endpoints
-
-### Employee APIs
-| Method | Endpoint | Description |
-|------|--------|-------------|
-| POST | `/api/employees` | Create employee |
-| GET | `/api/employees` | Get all employees |
-| GET | `/api/employees/{id}` | Get employee by ID |
-| PUT | `/api/employees/{id}` | Update employee |
-| DELETE | `/api/employees/{id}` | Delete employee by ID |
-| DELETE | `/api/employees/all` | Delete all employees |
-
-### Manager APIs
-| Method | Endpoint | Description |
-|------|--------|-------------|
-| POST | `/api/managers` | Create manager |
-| GET | `/api/managers` | Get all managers |
-| GET | `/api/managers/{id}` | Get manager by ID |
-| PUT | `/api/managers/{id}` | Update manager |
-| DELETE | `/api/managers/{id}` | Delete manager by ID |
-| DELETE | `/api/managers/all` | Delete all managers |
+## Tech Stack
+| Category | Technology |
+|----------|------------|
+| Backend | Java, Spring Boot, Spring Web |
+| ORM | Spring Data JPA (Hibernate) |
+| Database | MySQL |
+| Build Tool | Maven |
+| API Testing | Postman, Insomnia |
 
 ---
 
 ## Project Structure
 ```
-EMS-EmployeeManagementSystem
-├── frontend/              # React + MUI frontend
-│ ├── src/
-│ ├── package.json
-│ └── vite.config.js
-├── src/                   # Spring Boot backend
-│ └── main/java/com/som/ems
+employee-management-system/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── som/
+│       │           └── ems/
+│       │               ├── EmsApplication.java
+│       │               │
+│       │               ├── controller/
+│       │               │   ├── EmployeeController.java
+│       │               │   └── ManagerController.java
+│       │               │
+│       │               ├── dto/
+│       │               │   ├── ErrorResponseDto.java
+│       │               │   └── ResponseMessageDto.java
+│       │               │
+│       │               ├── entity/
+│       │               │   ├── Employee.java
+│       │               │   └── Manager.java
+│       │               │
+│       │               ├── exceptions/
+│       │               │   ├── ResourceNotFoundException.java
+│       │               │   └── GlobalExceptionHandler.java
+│       │               │
+│       │               ├── repository/
+│       │               │   ├── EmployeeRepository.java
+│       │               │   └── ManagerRepository.java
+│       │               │
+│       │               ├── service/
+│       │               │   ├── EmployeeService.java
+│       │               │   └── ManagerService.java
+│       │               │
+│       │               ├── serviceImpl/
+│       │               │   ├── EmployeeServiceImpl.java
+│       │               │   └── ManagerServiceImpl.java
+│       │               │
+│       │               └── utility/
+│       │                   └── Constants.java
+│       │
+│       └── resources/
+│           └── application.properties
+│
 ├── pom.xml
+├── .gitignore
 └── README.md
 ```
----
-
-## Screenshots
-
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### Add / Update Employee
-![Add Employee](screenshots/add-employee.png)
-
-### Employees
-![Employees](screenshots/employees.png)
-
-### Managers
-![Managers](screenshots/managers.png)
-
----
-## Learning Outcomes
-- Built real-world REST APIs using Spring Boot  
-- Integrated React frontend with backend APIs  
-- Implemented clean CRUD operations  
-- Learned GitHub monorepo management  
-- Improved UI/UX using Material UI  
 
 ---
 
-## Author
-**Som Gupta**  
-GitHub: https://github.com/somguptaa  
+## Package Description
+
+- #### `com.som.ems`
+Main application package containing `EmsApplication.java`.
+
+- #### `com.som.ems.controller`
+Contains all REST API controllers.
+
+- #### `com.som.ems.dto`
+Contains DTO classes used for response models.
+
+- #### `com.som.ems.entity`
+Contains JPA entity classes mapped to database tables.
+
+- #### `com.som.ems.exceptions`
+Contains custom exceptions and the global exception handler.
+
+- #### `com.som.ems.repository`
+Contains Spring Data JPA repository interfaces.
+
+- #### `com.som.ems.service`
+Contains service layer interfaces.
+
+- #### `com.som.ems.serviceImpl`
+Contains implementation of service interfaces.
+
+- #### `com.som.ems.utility`
+Contains common reusable utility/helper classes.
+
+
+---
+## API Endpoints
+
+### Employee APIs
+
+| Method | Endpoint                                 | Description                                |
+|--------|------------------------------------------|--------------------------------------------|
+| POST   | `/api/employees`                         | Create new employee                        |
+| GET    | `/api/employees`                         | Get all employees                          |
+| GET    | `/api/employees/{id}`                    | Get employee by ID                         |
+| PUT    | `/api/employees/{id}`                    | Update employee details                    |
+| DELETE | `/api/employees/{id}`                    | Delete employee                            |
+| DELETE | `/api/employees`                         | Delete all employee                        |
+
+
+---
+
+### Manager APIs
+
+| Method | Endpoint                                 | Description                                    |
+|--------|------------------------------------------|------------------------------------------------|
+| POST   | `/api/managers`                          | Create new manager                             |
+| GET    | `/api/managers`                          | Get all managers                               |
+| GET    | `/api/managers/{id}`                     | Get manager by ID                              |
+| PUT    | `/api/managers/{id}`                     | Update manager details                         |
+| DELETE | `/api/managers/{id}`                     | Delete manager                                 |
+| DELETE | `/api/managers`                          | Delete all manager                             |
 
 ---
 
 ## Future Enhancements
-- Authentication & Authorization (JWT)  
-- Role-based access (Admin / Manager)  
-- Pagination & sorting  
-- Deployment using Docker or Cloud platforms  
-- Unit and integration testing  
 
----
+- Pagination & Sorting for Employee and Manager Lists
+- Frontend UI for better user interaction 
+
+--- 
+
+## Author
+
+**Som Gupta**
+
+- GitHub: https://github.com/somguptaa  
+- LinkedIn: https://www.linkedin.com/in/som-gupta-2k3/  
+- Portfolio: https://som9889.github.io/
+- Email: somgupta0011@gmail.com 
+
 
 
 ## Licence

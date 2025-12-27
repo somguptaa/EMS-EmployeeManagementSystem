@@ -30,23 +30,12 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-<<<<<<< HEAD
 	// CREATE
 	@Operation(summary = "Create New Employee")
 	@ApiResponses({ @ApiResponse(responseCode = "201", description = "Employee Created Successfully"),
 			@ApiResponse(responseCode = "400", description = "Employee Creation Failed") })
 	@PostMapping
 	public ResponseEntity<ResponseMessageDto> createNewEmployee(@Valid @RequestBody Employee employee) {
-=======
-    // CREATE 
-    @Operation(summary = "Create New Employee")
-    @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Employee Created Successfully"),
-            @ApiResponse(responseCode = "400", description = "Employee Creation Failed")
-    })
-    @PostMapping
-    public ResponseEntity<ResponseMessageDto> createNewEmployee(@Valid @RequestBody Employee employee) {
->>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 
 		logger.info("START: Create Employee Request Received: {}", employee);
 
@@ -138,17 +127,10 @@ public class EmployeeController {
 		return ResponseEntity.ok(response);
 	}
 
-<<<<<<< HEAD
 	// DELETE ALL
 	@Operation(summary = "Delete All Employees")
 	@DeleteMapping("/all")
 	public ResponseEntity<ResponseMessageDto> deleteAllEmployees() {
-=======
-    // DELETE ALL
-    @Operation(summary = "Delete All Employees")
-    @DeleteMapping("/all")
-    public ResponseEntity<ResponseMessageDto> deleteAllEmployees() {
->>>>>>> branch 'main' of https://github.com/somguptaa/EMS-EmployeeManagementSystem.git
 
 		logger.warn("WARNING: Request Received to Delete ALL Employees");
 
