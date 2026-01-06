@@ -1,47 +1,76 @@
-# Employee & Manager Management System  
-### Spring Boot + MySQL + REST API
+# Employee & Manager Management System
+### Spring Boot + MySQL + React + Material UI
 
-A complete **Employee & Manager Management System** built using **Spring Boot**, **Spring Data JPA**, and **MySQL**.  
-This project supports full CRUD operations for both **Employees** and **Managers**.
+A complete **Full-Stack Employee & Manager Management System** built using **Spring Boot (REST APIs)** on the backend and **React with Material UI** on the frontend.  
+This application supports full **CRUD operations** for both **Employees** and **Managers** with a clean and responsive UI.
 
 ---
 
 ## Features
 
-### Manager Features
-- Add new managers  
-- Update manager details  
-- View all managers  
-- Fetch manager by ID  
-- Delete managers
-- Delete all managers  
+### Manager Management
+- Add new managers
+- Update manager details
+- View all managers
+- Fetch manager by ID
+- Delete manager
+- Delete all managers
 
-### Employee Features
-- Add new employees  
-- Update employee info  
-- View all employees  
-- Fetch employee by ID  
-- Delete employees
+### Employee Management
+- Add new employees
+- Update employee details
+- View all employees
+- Fetch employee by ID
+- Delete employee
 - Delete all employees
 
----
-### Additional Feature
-- Integrated **Swagger API Documentation** for exploring and testing APIs easily.
-- Applied **Loggers(SLF4J)** for easy debugging & maintenance.
+### Frontend Features
+- Responsive UI built with React
+- Modern design using Material UI (MUI)
+- REST API integration with Spring Boot
+- Form validation and user-friendly alerts
+- Component-based architecture
+
+### Additional Features
+- Integrated Swagger API Documentation
+- SLF4J Logging for debugging and maintenance
+- Centralized Global Exception Handling
+- RESTful API design
+
 ---
 
 ## Tech Stack
-| Category | Technology |
-|----------|------------|
-| Backend | Java, Spring Boot, Spring Web |
-| ORM | Spring Data JPA (Hibernate) |
-| Database | MySQL |
-| Build Tool | Maven |
-| API Testing | Postman, Insomnia |
+
+### Backend
+| Technology | Usage |
+|-----------|-------|
+| Java | Backend language |
+| Spring Boot | Application framework |
+| Spring Web | REST APIs |
+| Spring Data JPA | ORM (Hibernate) |
+| MySQL | Database |
+| Maven | Dependency management |
+
+### Frontend
+| Technology | Usage |
+|-----------|-------|
+| React | Frontend framework |
+| Material UI (MUI) | UI components |
+| Axios | API communication |
+| JavaScript (ES6+) | Frontend logic |
+| HTML5 & CSS3 | UI styling |
+
+### Tools
+- Postman / Insomnia – API testing
+- Swagger UI – API documentation
+- Git & GitHub – Version control
 
 ---
 
 ## Project Structure
+
+### Backend (Spring Boot)
+
 ```
 employee-management-system/
 ├── src/
@@ -93,83 +122,88 @@ employee-management-system/
 
 ---
 
-## Package Description
-
-- #### `com.som.ems`
-Main application package containing `EmsApplication.java`.
-
-- #### `com.som.ems.controller`
-Contains all REST API controllers.
-
-- #### `com.som.ems.dto`
-Contains DTO classes used for response models.
-
-- #### `com.som.ems.entity`
-Contains JPA entity classes mapped to database tables.
-
-- #### `com.som.ems.exceptions`
-Contains custom exceptions and the global exception handler.
-
-- #### `com.som.ems.repository`
-Contains Spring Data JPA repository interfaces.
-
-- #### `com.som.ems.service`
-Contains service layer interfaces.
-
-- #### `com.som.ems.serviceImpl`
-Contains implementation of service interfaces.
-
-- #### `com.som.ems.utility`
-Contains common reusable utility/helper classes.
-
+### Frontend (React)
+```
+ems-frontend/
+├── src/
+│ ├── components/
+│ │ ├── employees/
+│ │ ├── managers/
+│ │ └── common/
+│ ├── services/
+│ │ └── api.js
+│ ├── pages/
+│ ├── App.js
+│ └── index.js
+│
+├── public/
+└── package.json
+```
 
 ---
+
+## Package Description (Backend)
+
+- controller – REST API controllers
+- dto – Response and error DTOs
+- entity – JPA entities mapped to database tables
+- exceptions – Custom exceptions and global handler
+- repository – Spring Data JPA repositories
+- service – Service layer interfaces
+- serviceImpl – Business logic implementations
+- utility – Constants and helper classes
+
+---
+
 ## API Endpoints
 
 ### Employee APIs
 
-| Method | Endpoint                                 | Description                                |
-|--------|------------------------------------------|--------------------------------------------|
-| POST   | `/api/employees`                         | Create new employee                        |
-| GET    | `/api/employees`                         | Get all employees                          |
-| GET    | `/api/employees/{id}`                    | Get employee by ID                         |
-| PUT    | `/api/employees/{id}`                    | Update employee details                    |
-| DELETE | `/api/employees/{id}`                    | Delete employee                            |
-| DELETE | `/api/employees`                         | Delete all employee                        |
-
-
----
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/employees | Create employee |
+| GET | /api/employees | Get all employees |
+| GET | /api/employees/{id} | Get employee by ID |
+| PUT | /api/employees/{id} | Update employee |
+| DELETE | /api/employees/{id} | Delete employee |
+| DELETE | /api/employees | Delete all employees |
 
 ### Manager APIs
 
-| Method | Endpoint                                 | Description                                    |
-|--------|------------------------------------------|------------------------------------------------|
-| POST   | `/api/managers`                          | Create new manager                             |
-| GET    | `/api/managers`                          | Get all managers                               |
-| GET    | `/api/managers/{id}`                     | Get manager by ID                              |
-| PUT    | `/api/managers/{id}`                     | Update manager details                         |
-| DELETE | `/api/managers/{id}`                     | Delete manager                                 |
-| DELETE | `/api/managers`                          | Delete all manager                             |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/managers | Create manager |
+| GET | /api/managers | Get all managers |
+| GET | /api/managers/{id} | Get manager by ID |
+| PUT | /api/managers/{id} | Update manager |
+| DELETE | /api/managers/{id} | Delete manager |
+| DELETE | /api/managers | Delete all managers |
 
 ---
 
 ## Future Enhancements
+- Pagination and sorting
+- Role-based authentication (JWT)
+- Search and filter functionality
+- Dashboard analytics
+- Docker support
+- Cloud deployment
 
-- Pagination & Sorting for Employee and Manager Lists
-- Frontend UI for better user interaction 
-
---- 
+---
 
 ## Author
 
-**Som Gupta**
+Som Gupta  
 
-- GitHub: https://github.com/somguptaa  
-- LinkedIn: https://www.linkedin.com/in/som-gupta-2k3/  
-- Portfolio: https://som9889.github.io/
-- Email: somgupta0011@gmail.com 
+GitHub: https://github.com/somguptaa  
+LinkedIn: https://www.linkedin.com/in/som-gupta-2k3/  
+Portfolio: https://som9889.github.io/  
+Email: somgupta0011@gmail.com
 
+---
 
+## License
 
-## Licence
-- Released Under <a href="https://github.com/somguptaa/EMS-EmployeeManagementSystem/blob/main/LICENSE"> MIT Licence </a>
+This project is licensed under the MIT License.
+
+https://github.com/somguptaa/EMS-EmployeeManagementSystem/blob/main/LICENSE
