@@ -24,6 +24,24 @@ This application supports full **CRUD operations** for both **Employees** and **
 - Delete employee
 - Delete all employees
 
+---
+
+## Screenshots
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Add Employee & Managers
+![Add Employee](screenshots/add-employee.png)
+
+### All Employees
+![Employees](screenshots/employees.png)
+
+### All Managers
+![Managers](screenshots/managers.png)
+
+---
+
 ### Frontend Features
 - Responsive UI built with React
 - Modern design using Material UI (MUI)
